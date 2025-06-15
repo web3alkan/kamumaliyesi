@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayfa 117 - Kamu Maliyesi Sorusu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background 0.2s;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: #764ba2;
+        }
+        
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        
+        
+        .question-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .question {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .option {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            font-size: 1.1em;
+        }
+        
+        .option:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .option.selected {
+            background: #667eea;
+            color: white;
+            border-color: #5a67d8;
+        }
+        
+        .option.correct {
+            background: #48bb78;
+            color: white;
+            border-color: #38a169;
+        }
+        
+        .option.incorrect {
+            background: #f56565;
+            color: white;
+            border-color: #e53e3e;
+        }
+        
+        .option-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .explanation {
+            background: #e6fffa;
+            border-left: 4px solid #4fd1c7;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 0 10px 10px 0;
+            display: none;
+        }
+        
+        .explanation.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .explanation h3 {
+            color: #2d3748;
+            margin-top: 0;
+        }
+        
+        .result {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .result.correct {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+        
+        .result.incorrect {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📖 Sayfa 117 - Kamu Maliyesi</h1>
+    </div>
+    
+    <div class="navigation">
+        <a href="../index.html" class="nav-btn">🏠 Ana Sayfa</a>
+        <div>
+            <a href="question_116.html" class="nav-btn">← Önceki</a>
+            <a href="question_118.html" class="nav-btn">Sonraki →</a>
+        </div>
+    </div>
+    
+    
+    <div class="question-container">
+        <div class="question">Sayfa 117: Bu sayfada hangi mali araç ele alınmaktadır?</div>
+        
+        <ul class="options" id="options">
+            <li class="option" onclick="selectOption(0)" id="option0">
+                <span class="option-label">A)</span> Vergiler
+            </li>
+            <li class="option" onclick="selectOption(1)" id="option1">
+                <span class="option-label">B)</span> Borçlanma
+            </li>
+            <li class="option" onclick="selectOption(2)" id="option2">
+                <span class="option-label">C)</span> Kamu Harcamaları
+            </li>
+            <li class="option" onclick="selectOption(3)" id="option3">
+                <span class="option-label">D)</span> Bütçe
+            </li>
+            <li class="option" onclick="selectOption(4)" id="option4">
+                <span class="option-label">E)</span> Mali Denetim
+            </li>
+        </ul>
+        
+        <button class="submit-btn" onclick="submitAnswer()" id="submitBtn">Cevabı Kontrol Et</button>
+        
+        <div class="explanation" id="explanation">
+            <h3>💡 Açıklama</h3>
+            <p>Sayfada vergiler ve vergi sisteminin işleyişi detaylı olarak incelenmektedir.</p>
+        </div>
+    </div>
+    
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number">117</div>
+            <div class="stat-label">Sayfa</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Seçenek</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">A</div>
+            <div class="stat-label">Doğru Cevap</div>
+        </div>
+    </div>
+    
+    <script>
+        let selectedOption = -1;
+        let answered = false;
+        const correctAnswer = 0;
+        
+        function selectOption(index) {
+            if (answered) return;
+            
+            // Remove previous selection
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Select new option
+            document.getElementById(`option${index}`).classList.add('selected');
+            selectedOption = index;
+            
+            // Enable submit button
+            document.getElementById('submitBtn').disabled = false;
+        }
+        
+        function submitAnswer() {
+            if (selectedOption === -1 || answered) return;
+            
+            answered = true;
+            
+            // Show results
+            document.querySelectorAll('.option').forEach((opt, index) => {
+                opt.style.cursor = 'default';
+                if (index === correctAnswer) {
+                    opt.classList.add('correct');
+                } else if (index === selectedOption && index !== correctAnswer) {
+                    opt.classList.add('incorrect');
+                }
+            });
+            
+            // Show result message
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `result ${selectedOption === correctAnswer ? 'correct' : 'incorrect'}`;
+            resultDiv.innerHTML = selectedOption === correctAnswer ? 
+                '✅ Tebrikler! Doğru cevap.' : 
+                `❌ Yanlış cevap. Doğru cevap: ${String.fromCharCode(65 + correctAnswer)} şıkkı`;
+            
+            document.querySelector('.question-container').appendChild(resultDiv);
+            
+            // Show explanation
+            document.getElementById('explanation').classList.add('show');
+            
+            // Disable submit button
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').textContent = 'Cevaplandı';
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (answered) return;
+            
+            if (e.key >= '1' && e.key <= '5') {
+                const index = parseInt(e.key) - 1;
+                if (index < 5) {
+                    selectOption(index);
+                }
+            } else if (e.key === 'Enter' && selectedOption >= 0) {
+                submitAnswer();
+            }
+        });
+    </script>
+</body>
+</html>
